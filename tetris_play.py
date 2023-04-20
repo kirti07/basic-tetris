@@ -61,20 +61,9 @@ def remove_completed_rows(board):
 
 
 def main():
-    """Play the game:
-    1. Create the board
-    2. Select random piece from the list of pieces and place it at the top centre of the board
-    3 Loop Until Game is Over:
-        1. Prompt User Input
-        2. if Valid Input : Create copy of the current piece and modify position ; -> new position
-        3. if new position valid update board else select another random piece and continue in the loop(1)
-        3. if invalid:
-            check if current piece is at top of the board
-            if the current piece is at top of the board. select a new random piece
-            if new piece has no valid position game is over. 
-    
-    
+    """Play the game    
     """
+
     board = create_board()
     current_piece = get_random_piece(board)
     current_row = 0
