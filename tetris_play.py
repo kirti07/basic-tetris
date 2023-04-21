@@ -121,7 +121,6 @@ def main():
             print("Thank You! Game is Over!!")
         else:
             current_piece = get_random_piece(board)
-            """New piece at a ranodom position along x axis"""
             current_row = 0  
             max_left = BOARD_WIDTH - len(current_piece[0])
             max_right = 0
