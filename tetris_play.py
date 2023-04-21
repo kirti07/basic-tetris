@@ -59,7 +59,20 @@ def remove_completed_rows(board):
         del board[row]
         board.insert(0,[0]* BOARD_WIDTH)
 
+def add_piece_to_fallen_piece(piece, position, fallen_pieces):
+    """TODO"""
+    return 0
 
+def is_game_over(piece, cuurent_row,current_col, fallen_pieces):
+    for i in range(len(piece)):
+        for j in range(len(piece)):
+            if piece[i][j] == 1:
+                row = cuurent_row + i
+                col = current_col + j
+            if row < 0 or row >= BOARD_HEIGHT or col < 0 or col >= BOARD_WIDTH:
+                return True
+        return False 
+   
 def main():
     """Play the game    
     """
@@ -86,6 +99,9 @@ def main():
             new_piece = list(reversed(list(zip(*new_piece))))
         elif move == " ":
             new_row +=1
+        else:
+            print("Invalid Move")
+            continue
         
 
         if is_valid_move(board, new_piece, new_row, new_col):
@@ -95,9 +111,19 @@ def main():
             add_piece_to_board(board, new_piece, new_row, new_col)
             remove_completed_rows(board)
             current_piece = get_random_piece(board)
+            fallen_piece = add_piece_to_fallen_piece(current_piece, 0, 0)
         else:
-            print("Game Over")
+            print("Invalid move")
             break
 
-
+        if is_game_over(current_piece,current_row,current_col, 0):
+            game_over = True
+            print("Thank You! Game is Over!!")
+        else:
+            current_piece = get_random_piece(board)
+            """New piece at a ranodom position along x axis"""
+            current_row = 0  
+            max_left = BOARD_WIDTH - len(current_piece[0])
+            max_right = 0
+            current_col = random.randint(max_right, max_left)
 main()
